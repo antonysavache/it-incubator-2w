@@ -55,7 +55,6 @@ describe('posts testing', () => {
                     content: postsMock.correct.content,
                     blogId: createdBlog.id,
                     blogName: createdBlog.name,
-                    createdAt: expect.any(String)
                 })
             })
         })
@@ -69,7 +68,7 @@ describe('posts testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: expect.arrayContaining([
+                            errorsMessages: expect.arrayContaining([
                                 {
                                     message: expect.any(String),
                                     field: "title"
@@ -94,10 +93,8 @@ describe('posts testing', () => {
                     .send(postsMock.incorrectTitle)
                     .expect(400)
                     .expect(res => {
-                        console.log(createdBlog)
-                        console.log(res)
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: "title"
                             }]
@@ -113,7 +110,7 @@ describe('posts testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: "shortDescription"
                             }]
@@ -129,7 +126,7 @@ describe('posts testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: "content"
                             }]
@@ -145,7 +142,7 @@ describe('posts testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: "blogId"
                             }]
@@ -277,7 +274,7 @@ describe('posts testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: "title"
                             }]
@@ -297,7 +294,7 @@ describe('posts testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: "shortDescription"
                             }]
@@ -317,7 +314,7 @@ describe('posts testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: "content"
                             }]
@@ -336,7 +333,7 @@ describe('posts testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: "blogId"
                             }]

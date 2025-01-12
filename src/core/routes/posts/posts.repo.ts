@@ -5,13 +5,14 @@ export type PostType = {
     content: string
     blogId: string
     blogName: string
-    createdAt: string
+    createdAt?: string
 }
+type PostOutputType = Omit<PostType, 'createdAt'>
 
 export class PostsRepository {
     private posts: PostType[] = []
 
-    createPost(title: string, shortDescription: string, content: string, blogId: string, blogName: string): PostType {
+    createPost(title: string, shortDescription: string, content: string, blogId: string, blogName: string): PostOutputType {
         const newPost: PostType = {
             id: (+new Date()).toString(),
             title,
@@ -22,20 +23,20 @@ export class PostsRepository {
             createdAt: new Date().toISOString()
         }
         this.posts.push(newPost)
-        return newPost
+        const {createdAt, ...postOutput} = newPost
+        return postOutput
     }
 
-    findAllPosts(): PostType[] {
-        return this.posts
-    }
-
-    findPostById(id: string): PostType | null {
+    findPostById(id: string): PostOutputType | null {
         const post = this.posts.find(post => post.id === id)
-        return post || null
+        if (!post) return null
+
+        const {createdAt, ...postOutput} = post
+        return postOutput
     }
 
-    findPostsByBlogId(blogId: string): PostType[] {
-        return this.posts.filter(post => post.blogId === blogId)
+    findAllPosts(): PostOutputType[] {
+        return this.posts.map(({createdAt, ...post}) => post)
     }
 
     updatePost(id: string, title: string, shortDescription: string, content: string): boolean {

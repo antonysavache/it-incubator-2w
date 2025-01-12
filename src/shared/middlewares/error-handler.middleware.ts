@@ -9,7 +9,7 @@ export const handleValidationErrors = (req: Request, res: Response, next: NextFu
             field: error.type === 'field' ? error.path : error.type
         }))
 
-        return res.status(400).json({ errorMessages: errorsMessages })
+        return res.status(400).json({ errorsMessages: errorsMessages })
     }
     return next()
 }

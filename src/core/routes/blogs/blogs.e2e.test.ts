@@ -46,7 +46,7 @@ describe('blogs testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: 'name'
                             }]
@@ -62,7 +62,7 @@ describe('blogs testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: 'description'
                             }]
@@ -78,7 +78,7 @@ describe('blogs testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: 'websiteUrl'
                             }]
@@ -94,7 +94,7 @@ describe('blogs testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: expect.arrayContaining([
+                            errorsMessages: expect.arrayContaining([
                                 {
                                     message: expect.any(String),
                                     field: "name"
@@ -109,7 +109,7 @@ describe('blogs testing', () => {
                                 }
                             ])
                         })
-                        expect(res.body.errorMessages).toHaveLength(3)
+                        expect(res.body.errorsMessages).toHaveLength(3)
                     })
             })
 
@@ -126,12 +126,12 @@ describe('blogs testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: 'websiteUrl'
                             }]
                         })
-                        expect(res.body.errorMessages).toHaveLength(1)
+                        expect(res.body.errorsMessages).toHaveLength(1)
                     })
             });
 
@@ -241,7 +241,7 @@ describe('blogs testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: 'name'
                             }]
@@ -263,7 +263,7 @@ describe('blogs testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: [{
+                            errorsMessages: [{
                                 message: expect.any(String),
                                 field: 'websiteUrl'
                             }]
@@ -285,7 +285,7 @@ describe('blogs testing', () => {
                     .expect(400)
                     .expect(res => {
                         expect(res.body).toEqual({
-                            errorMessages: expect.arrayContaining([
+                            errorsMessages: expect.arrayContaining([
                                 {
                                     message: expect.any(String),
                                     field: 'name'
@@ -300,7 +300,7 @@ describe('blogs testing', () => {
                                 }
                             ])
                         });
-                        expect(res.body.errorMessages).toHaveLength(3);
+                        expect(res.body.errorsMessages).toHaveLength(3);
                     });
             });
 
